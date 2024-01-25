@@ -1,0 +1,17 @@
+name: Your Workflow Name
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  your_job_name:
+    env:
+      YOUR_VARIABLE_NAME: ubuntu-latest
+    runs-on: YOUR_VARIABLE_NAME
+    steps:
+      - name: Your Next Step
+        run: |
+          # Use the environment variable here
+          echo $YOUR_VARIABLE_NAME
