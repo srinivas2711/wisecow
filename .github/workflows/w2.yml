@@ -1,0 +1,22 @@
+name: Your Workflow Name
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  check_dockerfile:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Check if Dockerfile exists
+        run: |
+          if [ -f "Dockerfile" ]; then
+            echo "Dockerfile exists."
+          else
+            echo "Dockerfile not found."
+            exit 1
+          fi
