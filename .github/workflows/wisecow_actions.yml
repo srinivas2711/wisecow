@@ -23,3 +23,9 @@ jobs:
         run: |
           docker build -t ${{secrets.DOCKERHUB_USERNAME}}/wisecow:latest .
           docker push ${{ secrets.DOCKERHUB_USERNAME}}/wisecow:latest
+      - name: Deploy to Kubernetes
+        uses: appleboy/kubernetes-action@master
+        with:
+          image: ${{ secrets.DOCKERHUB_USERNAME}}/wisecow:latest
+          namespace: default
+          manifest: ./deployment.yaml 
